@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>테이블 만들기</h2>
+	<hr>
+	<table border=1>
+		<caption>표제목</caption>
+		<thead>헤딩 셀</thead>
+		<tr>
+		<td>지원회사<td pading:20px>     
+		</tr>
+		<tbody>데이터 셀</tbody>
+		<tfoot>바닥 셀</tfoot>
+	</table>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>테이블 만들기</h2>
+	<hr>
+	<table border="1">
+		<caption>입사지원서</caption>
+		<thead>헤딩 셀</thead>
+		
+		<tr>
+		<td>지원회사</td>
+		<td>　　　　	</td>
+		<td>성명</td>
+		<td>　　 　　　　 (한자:　　　　)　　　 </td>
+		<td lowspan="5">사진</td>
+		
+		</tr>
+		<tr>
+		<td>지원구분</td>
+		<td>　　　　	</td>
+		<td>주민번호</td>
+		<td>　　　　　　- 　　　　(만　　세)</td>
+		<td lowspan="5">사진</td>
+		
+		<tr>
+		<td>지원부문</td>
+		<td>　　　　	</td>
+		<td>현주소</td>
+		<td>(우)　　-　　　(tel)　　　　-　　　-　　　　</td>
+		<td lowspan="5" align="center">사진</td>
+		
+		<tr>
+		<td>희망연봉</td>
+		<td>　　　　	</td>
+		<td>연락처</td>
+		<td>(핸드폰)　　　　　/(E-Mail)　　　　　</td>
+		<td lowspan="5">사진</td>
+		<tr>
+		 
+		</tr>
+		<tbody>데이터 셀</tbody>
+		<tfoot>바닥 셀</tfoot>
+	</table>
+</body>
+</html>

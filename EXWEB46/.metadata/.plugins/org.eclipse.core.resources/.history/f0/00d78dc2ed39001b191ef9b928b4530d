@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<h1>OK!!!!!</h1>
+<h2>${n}${s}${c}</h2>
+<%
+//값처리 
+//db커넥션
+//result저장
+
+%>
+<%
+
+int row = 1;
+
+if(row == 1){
+		response.sendRedirect("guest_list.jsp");
+	}else{
+		response.sendRedirect("guest_write.jsp");
+	}
+
+%>
+
+<!-- 
+<script>
+	alert("등록 실패");
+	history.go(-1));
+</script>
+
+ -->
