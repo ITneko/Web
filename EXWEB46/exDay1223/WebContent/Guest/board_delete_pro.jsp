@@ -15,13 +15,14 @@
 %>
 	<script>
 		alert("삭제 성공!");
-		location.href="guest_list.jsp";
+		opener.location.replace("guest_list.jsp");
+		self.close();
 	</script>
 <%
 }else{
 %>
 	<script>
-		alert("삭제 실패!");
+		alert("비밀번호가 틀립니다!");
 		history.back();
 	</script>
 <%
