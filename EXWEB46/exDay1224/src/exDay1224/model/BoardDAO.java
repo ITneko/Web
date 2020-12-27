@@ -57,6 +57,38 @@ public class BoardDAO {
 		}
 		return row;
 	}
+	
+	// 게시글 검색 글 수 카운트
+		public int BoardCount2(String search, String key) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			String query = "select count(*) from tbl_board where " + search + " like '%" + key + "%'";
+			int row = 0;
+			try {
+				conn = getConnetion();
+				pstmt = conn.prepareStatement(query);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					row = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return row;
+		}
 
 	// 게시글 리스트
 	public List<BoardVO> BoardList() {
@@ -96,6 +128,45 @@ public class BoardDAO {
 		}
 		return list;
 	}
+	
+	// 검색된 게시글 리스트
+		public List<BoardVO> BoardSList(String search, String key) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<BoardVO> list = new ArrayList<BoardVO>();
+			BoardVO vo = null;
+
+			String query = "select * from tbl_board  where " + search + " like '%" + key + "%' order by idx desc";
+			try {
+				conn = getConnetion();
+				pstmt = conn.prepareStatement(query);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					vo = new BoardVO();
+					vo.setIdx(rs.getInt("idx"));
+					vo.setName(rs.getString("name"));
+					vo.setSubject(rs.getString("subject"));
+					vo.setReadcnt(rs.getInt("readcnt"));
+					vo.setRegdate(rs.getString("regdate"));
+					list.add(vo);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return list;
+		}
 
 	// 게시글 뷰
 	public BoardVO BoardView(int idx) {

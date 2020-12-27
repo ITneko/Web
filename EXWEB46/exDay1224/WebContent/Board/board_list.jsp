@@ -1,12 +1,38 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="exDay1224.model.* , java.util.*" %>
 
-<%
+<%	
+	request.setCharacterEncoding("UTF-8");
+	String search = "";
+	String key = "";
+	if(request.getParameter("key") != null){
+		search = request.getParameter("search");
+		key = request.getParameter("key");
+	}
+
 	BoardDAO dao = BoardDAO.getInstance();
-	int count = dao.BoardCount();
+	int count;
+	List<BoardVO> vo;
+	if(key.equals("")){
+		count = dao.BoardCount();
+		vo = dao.BoardList();
+	}else{
+		count = dao.BoardCount2(search,key);
+		vo = dao.BoardSList(search, key);
+	}
 	
-	List<BoardVO> vo = dao.BoardList();
+	
 %>
+<script>
+	function b_search1(){
+		if(search.key.value == ""){
+			alert("값을 입력해주세요");
+			search.key.focus;
+		}
+		b_search.submit();
+	}
+</script>
+
 
 <html>
 <head><title>게시판 읽기</title>
@@ -80,18 +106,18 @@
 			<td width="25%"> &nbsp;</td>
 			<td width="50%" align="center">
 				<table>
-					<form>	
+					<form name="b_search" action="board_list.jsp" method="post">	
 					<!-- 검색어를 이용하여 글제목, 작성자, 글내용 중에 하나를 입력 받아 처리하기 위한 부분 -->
 						<tr>
 							<td>
 								<select name="search">
-									<option value="">글제목</option>
-									<option value="">작성자</option>
-									<option value="">글내용</option>
+									<option value="subject"<%if(search.equals("subject")){ %> selected <% } %>>글제목</option>
+									<option value="name"<%if(search.equals("name")){ %> selected <% } %>>작성자</option>
+									<option value="contents"<%if(search.equals("contents")){ %>selected <% } %>>글내용</option>
 								</select>
 							</td>
-							<td> <input type="text" size=20 name=""></td>
-							<td> <a href="#"><img src="./img/search2.gif" border="0"></a></td>
+							<td> <input type="text" size=20 name="key" value="<%=key%>"></td>
+							<td> <a href="javascript:b_search1()"><img src="./img/search2.gif" border="0"></a></td>
 						</tr>
 					</form>
 				</table>
