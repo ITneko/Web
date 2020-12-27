@@ -25,9 +25,10 @@
 %>
 <script>
 	function b_search1(){
-		if(search.key.value == ""){
+		if(b_search.key.value == ""){
 			alert("값을 입력해주세요");
-			search.key.focus;
+			b_search.key.focus();
+			return;
 		}
 		b_search.submit();
 	}

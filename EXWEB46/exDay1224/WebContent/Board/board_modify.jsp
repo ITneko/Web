@@ -14,27 +14,27 @@
 function send(){
 	if(board.name.value == ""){
 		alert("이름을 입력해주세요");
-		board.name.focus;
+		board.name.focus();
 		return;
 	}
 	if(board.email.value == ""){
 		alert("이메일을 입력해주세요");
-		board.email.focus;
+		board.email.focus();
 		return;
 	}
 	if(board.subject.value == ""){
 		alert("제목을 입력해주세요");
-		board.subject.focus;
+		board.subject.focus();
 		return;
 	}
 	if(board.contents.value == ""){
 		alert("내용을 입력해주세요");
-		board.contents.focus;
+		board.contents.focus();
 		return;
 	}
 	if(board.pass.value == ""){
 		alert("비밀번호를 입력해주세요");
-		board.pass.focus;
+		board.pass.focus();
 		return;
 	}
 	
