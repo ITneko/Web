@@ -4,11 +4,29 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	int idx = Integer.parseInt(request.getParameter("idx"));
-
-	BoardDAO dao = BoardDAO.getInstance();
-	BoardVO vo = dao.BoardView(idx);
-	
+	GuestDAO dao = GuestDAO.getInstance();
+	// 쿠키가 있는지 검사
+		boolean bool = false;
+		Cookie info = null;
+		Cookie[] cookies = request.getCookies();
+		// 쿠키 검사
+		for(int i=0; i<cookies.length; i++){
+	info = cookies[i];
+	if(info.getName().equals("boardCookie"+idx)){
+		bool = true;
+		break;
+	}
+		}
+		
+		String newValue = "" + System.currentTimeMillis();
+		if(!bool){ // 쿠키가 존재하지 않으면
+	// 쿠키생성
+	info = new Cookie("boardCookie"+idx, newValue);
+	info.setMaxAge(24*60*60); // 일(초)
+	response.addCookie(info);
 	dao.BoardReadCount(idx);
+		}
+		BoardVO vo = dao.BoardView(idx);
 %>
 <script>
 	function del_(){
@@ -81,4 +99,3 @@
   </table>
   </body>
   </html>
-

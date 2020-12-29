@@ -5,9 +5,8 @@
 	request.setCharacterEncoding("UTF-8");
 	int idx = Integer.parseInt(request.getParameter("idx"));
 
-	BoardDAO dao = BoardDAO.getInstance();
+	GuestDAO dao = GuestDAO.getInstance();
 	BoardVO vo = dao.BoardView(idx);
-	
 %>
 
 <script>

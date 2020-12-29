@@ -3,7 +3,7 @@
 <%@ page import="exDay1224.model.* , java.util.*" %>
 
 <%
-	BoardDAO dao = BoardDAO.getInstance();
+	GuestDAO dao = GuestDAO.getInstance();
 	BoardVO vo = new BoardVO();
 	
 	vo.setName(request.getParameter("name"));

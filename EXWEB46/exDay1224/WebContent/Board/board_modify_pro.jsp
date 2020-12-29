@@ -13,7 +13,7 @@
 	vo.setEmail(request.getParameter("email"));
 	
 	
-	BoardDAO dao = BoardDAO.getInstance();
+	GuestDAO dao = GuestDAO.getInstance();
 	int row = dao.BoardModify(vo);
 	if(row == 1){
 %>

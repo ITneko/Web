@@ -6,7 +6,7 @@
 	int idx = Integer.parseInt(request.getParameter("idx"));
 	String pass = request.getParameter("pass");
 	
-	BoardDAO dao = BoardDAO.getInstance();
+	GuestDAO dao = GuestDAO.getInstance();
 	
 	int row = dao.BoardDelete(idx,pass);
 	if (row == 1) {
