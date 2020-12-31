@@ -1,4 +1,4 @@
-package exDay1230.servlet;
+package exBoard_Servlet_JSP.servlet;
 
 import java.io.IOException;
 
@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exDay1230.model.BoardDAO;
+import exBoard_Servlet_JSP.model.BoardDAO;
+import exBoard_Servlet_JSP.model.BoardVO;
 
 /**
- * Servlet implementation class BoardDeleteServlet
+ * Servlet implementation class BoardWriteServlet
  */
-@WebServlet("/board_delete.do")
-public class BoardDeleteServlet extends HttpServlet {
+@WebServlet("/board_write.do")
+public class BoardWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardDeleteServlet() {
+    public BoardWriteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,30 +31,40 @@ public class BoardDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idx = Integer.parseInt(request.getParameter("idx"));
-		int page = Integer.parseInt(request.getParameter("page"));
-		request.setAttribute("idx", idx);
+		request.setCharacterEncoding("UTF-8");
+		int page= Integer.parseInt(request.getParameter("page"));
+		
 		request.setAttribute("page", page);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Board/board_delete.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("Board/board_write.jsp");
 		rd.forward(request, response);
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idx = Integer.parseInt(request.getParameter("idx"));
+		request.setCharacterEncoding("UTF-8");
 		int page = Integer.parseInt(request.getParameter("page"));
 		
+		BoardVO board = new BoardVO();
+		board.setName(request.getParameter("name"));
+		board.setPass(request.getParameter("pass")); 
+		board.setEmail(request.getParameter("email"));
+		board.setSubject(request.getParameter("subject"));
+		board.setContents(request.getParameter("contents"));
+
 		BoardDAO dao = BoardDAO.getInstance();
-		int row = dao.boardDelete(idx);
+		int row = dao.boardWrite(board);
 		
-		request.setAttribute("row", row);
 		request.setAttribute("page", page);
+		request.setAttribute("row", row);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Board/board_delete_pro.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("Board/board_write_pro.jsp");
 		rd.forward(request, response);
+		
 	}
 
 }

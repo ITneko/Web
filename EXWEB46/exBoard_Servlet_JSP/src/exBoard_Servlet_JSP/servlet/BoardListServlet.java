@@ -1,4 +1,4 @@
-package exDay1230.servlet;
+package exBoard_Servlet_JSP.servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exDay1230.model.BoardDAO;
-import exDay1230.model.BoardDTO;
-import exDay1230.util.PageIndex;
+import exBoard_Servlet_JSP.model.BoardDAO;
+import exBoard_Servlet_JSP.model.BoardVO;
+import exBoard_Servlet_JSP.util.PageIndex;
 
 /**
  * Servlet implementation class BoardListServlet
@@ -70,7 +70,7 @@ public class BoardListServlet extends HttpServlet {
 		int endpage = nowpage * maxlist;
 		int listcount = totcount - ((nowpage-1)*maxlist);
 		
-		List<BoardDTO> list = null;
+		List<BoardVO> list = null;
 		if(key.equals("")) {
 			list = dao.boardList(startpage, endpage);
 		}else {

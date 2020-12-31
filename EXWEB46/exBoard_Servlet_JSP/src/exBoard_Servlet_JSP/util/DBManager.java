@@ -1,4 +1,4 @@
-package exDay1230.util;
+package exBoard_Servlet_JSP.util;
 
 import java.sql.*;
 

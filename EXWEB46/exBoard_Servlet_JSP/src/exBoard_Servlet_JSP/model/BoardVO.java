@@ -1,6 +1,6 @@
-package exDay1230.model;
+package exBoard_Servlet_JSP.model;
 
-public class BoardDTO {
+public class BoardVO {
 	private int idx;
 	private String pass;
 	private String name;

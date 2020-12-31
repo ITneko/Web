@@ -1,4 +1,4 @@
-package exDay1230.servlet;
+package exBoard_Servlet_JSP.servlet;
 
 import java.io.IOException;
 
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import exDay1230.model.BoardDAO;
-import exDay1230.model.BoardDTO;
+import exBoard_Servlet_JSP.model.BoardDAO;
+import exBoard_Servlet_JSP.model.BoardVO;
 
 /**
- * Servlet implementation class BoardWriteServlet
+ * Servlet implementation class BoardModifyServlet
  */
-@WebServlet("/board_write.do")
-public class BoardWriteServlet extends HttpServlet {
+@WebServlet("/board_modify.do")
+public class BoardModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardWriteServlet() {
+    public BoardModifyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,13 +32,18 @@ public class BoardWriteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int page= Integer.parseInt(request.getParameter("page"));
+		int idx = Integer.parseInt(request.getParameter("idx"));
+		int page = Integer.parseInt(request.getParameter("page"));
 		
+		BoardDAO dao = new BoardDAO();
+		BoardVO board = dao.boardView(idx);
+		
+		request.setAttribute("board", board);
+		request.setAttribute("idx", idx);
 		request.setAttribute("page", page);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Board/board_write.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("Board/board_modify.jsp");
 		rd.forward(request, response);
-		
 	}
 
 	/**
@@ -46,25 +51,23 @@ public class BoardWriteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		int idx = Integer.parseInt(request.getParameter("idx"));
 		int page = Integer.parseInt(request.getParameter("page"));
 		
-		BoardDTO board = new BoardDTO();
-		board.setName(request.getParameter("name"));
+		BoardDAO dao = new BoardDAO();
+		BoardVO board = new BoardVO();
 		board.setPass(request.getParameter("pass")); 
 		board.setEmail(request.getParameter("email"));
 		board.setSubject(request.getParameter("subject"));
 		board.setContents(request.getParameter("contents"));
 		
-		BoardDAO dao = BoardDAO.getInstance();
-		int row = dao.boardWrite(board);
+		int row = dao.boardModify(idx, board);
 		
-		request.setAttribute("page", page);
 		request.setAttribute("row", row);
+		request.setAttribute("page", page);
 		
-		
-		RequestDispatcher rd = request.getRequestDispatcher("Board/board_write_pro.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("Board/board_modify_pro.jsp");
 		rd.forward(request, response);
-		
 	}
 
 }

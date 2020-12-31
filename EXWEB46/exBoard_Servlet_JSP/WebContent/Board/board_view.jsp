@@ -44,7 +44,7 @@
              <p align="right"><font size="2" face="돋움">
               <a class="list" href="mailto:ein1027@nate.com">${board.name }</a> / <font size="2" face="돋움">${board.regdate } / ${board.readcnt }번 읽음</font>
              <p>
-             ${board.contents }<p><!--contents의 내용을 <BR>태그로 처리-->
+             ${board.contents}<p><!--contents의 내용을 <BR>태그로 처리-->
            </td>
          </tr>
        </table>

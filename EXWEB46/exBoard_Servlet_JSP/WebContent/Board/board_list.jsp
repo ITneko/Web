@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="exDay1230.model.*, java.util.*" %>
+<%@ page import="exBoard_Servlet_JSP.model.*, java.util.*" %>
 <%
-	List<BoardDTO> list = (List)request.getAttribute("list");
+	List<BoardVO> list = (List)request.getAttribute("list");
 	String search = "";
 	if(request.getAttribute("search")!=null){
 		search = (String)request.getAttribute("search");

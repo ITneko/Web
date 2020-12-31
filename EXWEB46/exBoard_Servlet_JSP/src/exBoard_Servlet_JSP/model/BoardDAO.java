@@ -1,4 +1,4 @@
-package exDay1230.model;
+package exBoard_Servlet_JSP.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import exDay1230.util.DBManager;
+import exBoard_Servlet_JSP.util.DBManager;
 
 public class BoardDAO {
 	private static BoardDAO instance = new BoardDAO();
@@ -85,12 +85,12 @@ public class BoardDAO {
 	}
 
 	// 전체 리스트
-	public List<BoardDTO> boardList(int startpage, int endpage) {
+	public List<BoardVO> boardList(int startpage, int endpage) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<BoardDTO> list = new ArrayList<BoardDTO>();
-		BoardDTO board = null;
+		List<BoardVO> list = new ArrayList<BoardVO>();
+		BoardVO board = null;
 
 		String query = "select X.* from (select rownum as rnum, A.* from (select * from tbl_board order by idx desc) A where rownum<=?) X where rnum>=?";
 
@@ -101,7 +101,7 @@ public class BoardDAO {
 			pstmt.setInt(2, startpage);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				board = new BoardDTO();
+				board = new BoardVO();
 				board.setIdx(rs.getInt("idx"));
 				board.setName(rs.getString("name"));
 				board.setSubject(rs.getString("subject"));
@@ -119,12 +119,12 @@ public class BoardDAO {
 	}
 
 	// 검색 리스트
-	public List<BoardDTO> boardList(String s_query, int startpage, int endpage) {
+	public List<BoardVO> boardList(String s_query, int startpage, int endpage) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<BoardDTO> list = new ArrayList<BoardDTO>();
-		BoardDTO board = null;
+		List<BoardVO> list = new ArrayList<BoardVO>();
+		BoardVO board = null;
 
 		String query = "select X.* from (select rownum as rnum, A.* from (select * from tbl_board order by idx desc)"
 				+ " A where " + s_query + " and rownum<=?) X where " + s_query + " and rnum>=?";
@@ -136,7 +136,7 @@ public class BoardDAO {
 			pstmt.setInt(2, startpage);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				board = new BoardDTO();
+				board = new BoardVO();
 				board.setIdx(rs.getInt("idx"));
 				board.setName(rs.getString("name"));
 				board.setSubject(rs.getString("subject"));
@@ -154,11 +154,11 @@ public class BoardDAO {
 	}
 
 	// 뷰
-	public BoardDTO boardView(int idx) {
+	public BoardVO boardView(int idx) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		BoardDTO board = null;
+		BoardVO board = null;
 
 		String query = "select * from tbl_board where idx=?";
 
@@ -168,7 +168,7 @@ public class BoardDAO {
 			pstmt.setInt(1, idx);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				board = new BoardDTO();
+				board = new BoardVO();
 				board.setName(rs.getString("name"));
 				board.setSubject(rs.getString("subject"));
 				board.setContents(rs.getNString("contents"));
@@ -186,7 +186,7 @@ public class BoardDAO {
 	}
 
 	// 글쓰기
-	public int boardWrite(BoardDTO board) {
+	public int boardWrite(BoardVO board) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -213,7 +213,7 @@ public class BoardDAO {
 	}
 
 	// 수정
-	public int boardModify(int idx, BoardDTO board) {
+	public int boardModify(int idx, BoardVO board) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
