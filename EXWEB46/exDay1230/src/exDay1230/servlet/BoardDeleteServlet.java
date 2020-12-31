@@ -30,8 +30,6 @@ public class BoardDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		int page = Integer.parseInt(request.getParameter("page"));
 		request.setAttribute("idx", idx);

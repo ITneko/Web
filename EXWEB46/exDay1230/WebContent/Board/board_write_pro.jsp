@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%
 	int row = (int)request.getAttribute("row");
-
 	if(row == 1){
 %>
 <script>

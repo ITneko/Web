@@ -31,7 +31,8 @@ public class BoardWriteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int page=0; Integer.parseInt(request.getParameter("page"));
+		request.setCharacterEncoding("UTF-8");
+		int page= Integer.parseInt(request.getParameter("page"));
 		
 		request.setAttribute("page", page);
 		

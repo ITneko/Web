@@ -34,7 +34,7 @@ public class BaordViewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		int page = Integer.parseInt(request.getParameter("page"));
-		//request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		BoardDTO board = null;
