@@ -1,7 +1,6 @@
 package exUserServletJSTL.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,21 +8,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import exUserServletJSTL.model.UsersDAO;
-import exUserServletJSTL.model.UsersVO;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class UserListServlet
+ * Servlet implementation class UserLogoutServlet
  */
-@WebServlet("/user_list")
-public class UserListServlet extends HttpServlet {
+@WebServlet("/user_logout")
+public class UserLogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserListServlet() {
+    public UserLogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,13 +29,9 @@ public class UserListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UsersDAO dao = UsersDAO.getInstance();
-		List<UsersVO> list = dao.userList();
-
-		request.setAttribute("list", list);
-		
-		
-		RequestDispatcher rd = request.getRequestDispatcher("Users/user_list.jsp");
+		HttpSession session = request.getSession();
+		session.invalidate(); // 세션해제
+		RequestDispatcher rd = request.getRequestDispatcher("Users/user_logout.jsp");
 		rd.forward(request, response);
 	}
 

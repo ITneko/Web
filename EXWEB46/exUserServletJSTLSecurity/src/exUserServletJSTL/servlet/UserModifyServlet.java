@@ -12,18 +12,19 @@ import javax.servlet.http.HttpSession;
 
 import exUserServletJSTL.model.UsersDAO;
 import exUserServletJSTL.model.UsersVO;
+import exUserServletJSTL.util.SHA256Util;
 
 /**
- * Servlet implementation class UserLoginServlet
+ * Servlet implementation class UserModifyServlet
  */
-@WebServlet("/user_login")
-public class UserLoginServlet extends HttpServlet {
+@WebServlet("/user_modify")
+public class UserModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserLoginServlet() {
+    public UserModifyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,8 +33,19 @@ public class UserLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* 세션설정이 없을경우 
+		String userid = request.getParameter("userid");
+		UsersDAO dao = UsersDAO.getInstance();
+		UsersVO vo = dao.userSelect(userid);
+		request.setAttribute("user", vo);
+		*/
+		/*세션설정값을 이용하는 경우
+		HttpSession session = request.getSession();
+		UsersVO vo = (UsersVO)session.getAttribute("user");
+		request.setAttribute("user", vo);
+		*/
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Users/user_login.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("Users/user_modify.jsp");
 		rd.forward(request, response);
 	}
 
@@ -41,24 +53,18 @@ public class UserLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userid = request.getParameter("userid");
-		String passwd = request.getParameter("passwd");
+		UsersVO vo = new UsersVO();
 		
+		vo.setUserid(request.getParameter("userid"));
+		vo.setNewpasswd(SHA256Util.getEncSHA256(request.getParameter("newpass")));
+		vo.setPasswd(SHA256Util.getEncSHA256(request.getParameter("passwd")));
+		vo.setTel(request.getParameter("tel"));
 		
-		//db연결
 		UsersDAO dao = UsersDAO.getInstance();
-		int row = dao.userLogin(userid, passwd);
-		
+		int row = dao.userModify(vo);
 		request.setAttribute("row", row);
-		if(row==1) {
-			UsersVO vo = dao.userSelect(userid);
-			HttpSession session = request.getSession(); //세션 객체 생성
-			//session.setAttribute("userid", userid); //세션 정보담기
-			session.setAttribute("user", vo); //세션 정보담기
-			session.setMaxInactiveInterval(1800); // 30분
-		}
-		request.setAttribute("userid", userid);
-		RequestDispatcher rd = request.getRequestDispatcher("Users/userlogin_ok.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("Users/user_modify_pro.jsp");
 		rd.forward(request, response);
 	}
 

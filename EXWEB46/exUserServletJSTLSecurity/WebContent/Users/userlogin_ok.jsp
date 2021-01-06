@@ -56,8 +56,8 @@ td   { font-family: 돋움, Verdana; font-size: 9pt; text-decoration: none; colo
 <table cellpadding=0 cellspacing=0 border=0 width=330>
   <tr>
     <td align="center">
-      <a href="user_modify.do">[자기정보수정]</a>
-      <a href="logout.do">[로그아웃]
+      <a href="user_modify">[자기정보수정]</a>
+      <a href="user_logout">[로그아웃]
       <a href="index.jsp">[메인으로가기]
 
 	</td>

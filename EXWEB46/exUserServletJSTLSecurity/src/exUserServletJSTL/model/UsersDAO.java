@@ -22,7 +22,7 @@ public class UsersDAO {
 		ResultSet rs = null;
 		int row = 0;
 
-		String query = "insert into tbl_users(name,userid,passwd,tel,email) values(?,?,?,?,?)";
+		String query = "insert into tbl_users_sec(name,userid,passwd,tel,email) values(?,?,?,?,?)";
 
 		try {
 			conn = DBManager.getConnetion();
@@ -47,7 +47,7 @@ public class UsersDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int row = 0;
-		String query = "select count(*) from tbl_users where userid=?";
+		String query = "select count(*) from tbl_users_sec where userid=?";
 
 		try {
 			conn = DBManager.getConnetion();
@@ -73,7 +73,7 @@ public class UsersDAO {
 		UsersVO vo = null;
 		List<UsersVO> list = new ArrayList<UsersVO>();
 
-		String query = "select * from tbl_users";
+		String query = "select * from tbl_users_sec";
 
 		try {
 			conn = DBManager.getConnetion();
@@ -105,7 +105,7 @@ public class UsersDAO {
 		int row = 0;
 
 //		String query = "select count(*) from tbl_users where userid=? and passwd=?";
-		String query = "select passwd from tbl_users where userid=?";
+		String query = "select passwd from tbl_users_sec where userid=?";
 
 		try {
 			// conn = getConnection();
@@ -118,7 +118,7 @@ public class UsersDAO {
 				String dbpass = rs.getString("passwd");
 				System.out.println(dbpass);
 				if (dbpass.equals(passwd)) {
-					query = "update tbl_users set last_time=sysdate where userid=?";
+					query = "update tbl_users_sec set last_time=sysdate where userid=?";
 //					pstmt.getConnection().prepareStatement(query);
 					pstmt = conn.prepareStatement(query);
 					pstmt.setString(1, userid);
@@ -147,7 +147,7 @@ public class UsersDAO {
 		ResultSet rs = null;
 		UsersVO vo = null;
 
-		String query = "select * from tbl_users where userid=?";
+		String query = "select * from tbl_users_sec where userid=?";
 
 		try {
 			conn = DBManager.getConnetion();
@@ -179,7 +179,7 @@ public class UsersDAO {
 
 			int row = 0;
 
-			String query = "select passwd from tbl_users where userid=?";
+			String query = "select passwd from tbl_users_sec where userid=?";
 
 			try {
 				// conn = getConnection();
@@ -192,7 +192,7 @@ public class UsersDAO {
 					String dbpass = rs.getString("passwd");
 					System.out.println(dbpass);
 					if (dbpass.equals(vo.getPasswd())) {
-						query = "update tbl_users set passwd=?, tel=? where userid=?";
+						query = "update tbl_users_sec set passwd=?, tel=? where userid=?";
 //						pstmt.getConnection().prepareStatement(query);
 						pstmt = conn.prepareStatement(query);
 						pstmt.setString(1, vo.getNewpasswd());

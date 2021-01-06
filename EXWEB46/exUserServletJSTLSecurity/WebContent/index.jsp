@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>exUserSerlvetJSTL 회원관리 프로그램</h1>
+	<h1>exUserSerlvetJSTLSecurity 회원관리 프로그램 비밀번호 암호화</h1>
 	
 	<c:if test="${empty userid }">
 	<h3><a href="user_insert">회원가입</a></h3>

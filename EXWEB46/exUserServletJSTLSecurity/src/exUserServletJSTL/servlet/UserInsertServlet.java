@@ -8,22 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import exUserServletJSTL.model.UsersDAO;
 import exUserServletJSTL.model.UsersVO;
+import exUserServletJSTL.util.SHA256Util;
+import exUserServletJSTL.model.UsersDAO;
 
 /**
- * Servlet implementation class UserLoginServlet
+ * Servlet implementation class UserInsertServlet
  */
-@WebServlet("/user_login")
-public class UserLoginServlet extends HttpServlet {
+@WebServlet("/user_insert")
+public class UserInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserLoginServlet() {
+    public UserInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,8 @@ public class UserLoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Users/user_login.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/Users/user_insert.jsp");
 		rd.forward(request, response);
 	}
 
@@ -41,24 +42,29 @@ public class UserLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userid = request.getParameter("userid");
-		String passwd = request.getParameter("passwd");
+		request.setCharacterEncoding("UTF-8");
+		UsersVO vo = new UsersVO();
+		String email1 = request.getParameter("email1");
+		String email2 = request.getParameter("email2");
+		String email = email1+ "@" + email2;
 		
+		vo.setName(request.getParameter("name"));
+		vo.setUserid(request.getParameter("userid"));
+		vo.setPasswd(SHA256Util.getEncSHA256(request.getParameter("passwd")));
+		vo.setTel(request.getParameter("tel"));
+		vo.setEmail(email);
 		
-		//db연결
+		System.out.println(vo.getName());
+		System.out.println(vo.getUserid());
+		System.out.println(vo.getPasswd());
+		System.out.println(vo.getTel());
+		
 		UsersDAO dao = UsersDAO.getInstance();
-		int row = dao.userLogin(userid, passwd);
+		int row = dao.userInsert(vo);
 		
 		request.setAttribute("row", row);
-		if(row==1) {
-			UsersVO vo = dao.userSelect(userid);
-			HttpSession session = request.getSession(); //세션 객체 생성
-			//session.setAttribute("userid", userid); //세션 정보담기
-			session.setAttribute("user", vo); //세션 정보담기
-			session.setMaxInactiveInterval(1800); // 30분
-		}
-		request.setAttribute("userid", userid);
-		RequestDispatcher rd = request.getRequestDispatcher("Users/userlogin_ok.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/Users/user_insert_pro.jsp");
 		rd.forward(request, response);
 	}
 

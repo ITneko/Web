@@ -3,14 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:if test="${row==1 }">
 	<script>
-		alert("작성성공!");
-		location.href = "user_login";
+		alert("수정성공!");
+		location.href = "index.jsp";
 	</script>
 </c:if>
 
 <c:if test="${row==0 }">
 	<script>
-		alert("작성실패!");
+		alert("수실패!");
 		history.back();
 	</script>
 </c:if>
