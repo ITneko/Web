@@ -116,7 +116,7 @@ td   { font-family: 돋움, Verdana; font-size: 9pt; text-decoration: none; colo
 									<table cellspacing=0 cellpadding=0>
 										<tr>
 											<td align=absmiddle>
-												<input type=text name=userid size=12 maxlength=16 value="" style="width:120">
+												<input type=text name=userid size=12 maxlength=16 value="" style="width:120" readonly>
 											</td>
 											<td>
                   								<img src="Users/img/u_bt01.gif" hspace=2 border=0 name=img1  align=absmiddle onClick="idcheck()">
