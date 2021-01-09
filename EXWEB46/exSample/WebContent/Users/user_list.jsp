@@ -8,6 +8,7 @@
 </c:if>
 <html>
 <head>
+
 <title>회원목록 보여주기</title>
 
 <STYLE TYPE="text/css">
@@ -18,6 +19,7 @@ td   { font-family: 돋움, Verdana; font-size: 9pt; text-decoration: none; colo
 </STYLE>
 </head>
 <body>
+
 <table width="550" border="1" cellspacing="0" cellpadding="2" bordercolorlight="#173E7C" bordercolordark="white">
   <tr>
     <td width=50 align=center>번호</td>

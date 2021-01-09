@@ -28,11 +28,16 @@
 
 </head>
 <body bgcolor="#FFFFFF" topmargin="0" leftmargin="0">
-<table border="0" width="800">
-  <tr>
-    <td width="20%" height="500" valign="top" bgcolor="#ecf1ef">
+<!-- 탑 메뉴 영역 삽입-->
+<%@ include file="/Include/topmenu.jsp" %>
 
-	<!-- 다음에 추가할 부분 --></td>
+<table border="0" width="800">
+<tr>
+  <td width="20%"  bgcolor="#ecf1ef" valign="top" style="padding-left:0;">
+	
+	<!--로그인 영역 삽입-->
+<%@ include file="/Include/login_form.jsp" %>
+  </td>
 
 	<td width="80%" valign="top">	
 		<br>

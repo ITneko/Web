@@ -4,6 +4,7 @@
 <head><title>방명록 삭제</title>
  <link rel="stylesheet" type="text/css" href="/stylesheet.css">
  </head>
+ 
  <body>
  <form method="post" name="del" action="guest_delete?idx=${idx }&page=${page}">
    <table border="0" cellpadding="0" cellspacing="0" width="300" align="center">

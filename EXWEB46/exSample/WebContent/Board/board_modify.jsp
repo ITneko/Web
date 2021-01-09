@@ -15,7 +15,6 @@
  <body topmargin="0" leftmargin="0">
  <table border="0" width="800">
  <tr>
-   <td width="20%" height="500" bgcolor="#ecf1ef" valign="top">
 
    <!-- 다음에 추가할 부분 "-->
    <script>
@@ -45,6 +44,16 @@
    </script>
 
    </td>
+   <!-- 탑 메뉴 영역 삽입-->
+<%@ include file="/Include/topmenu.jsp" %>
+
+<table border="0" width="800">
+<tr>
+  <td width="20%"  bgcolor="#ecf1ef" valign="top" style="padding-left:0;">
+	
+	<!--로그인 영역 삽입-->
+<%@ include file="/Include/login_form.jsp" %>
+  </td>
    <td width="80%" valign="top">&nbsp;<br>
      <img src="Board/img/bullet-01.gif"><font size="3" face="돋움" color="blue"> <b>자 유 게 시 판</b></font>
      <font size="2"> - 수정하기</font><p>

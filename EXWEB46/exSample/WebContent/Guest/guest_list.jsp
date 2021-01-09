@@ -1,17 +1,24 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
 <html>
 <head><title>방명록 읽기</title>
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <style type="text/css">
   a.list {text-decoration:none;color:black;font-size:10pt;}
 </style>
+
 </head>
+<%@ include file="/Include/topmenu.jsp" %>
 <body bgcolor="#FFFFFF" topmargin="0" leftmargin="0">
 <table border="0" width="800">
   <tr>
-    <td width="20%" height="500" valign="top" bgcolor="#ecf1ef">
+    <!--  <td width="20%" height="500" valign="top" bgcolor="#ecf1ef">-->
 	<!-- 다음에 추가할 부분 --></td>
+	<tr>
+  <td width="20%"  bgcolor="#ecf1ef" valign="top" style="padding-left:0;">
+	<%@ include file="/Include/login_form.jsp" %>
     <td width="80%" valign="top">	
     <br>
     <table border="0" cellspacing="1" width="100%" align="center">

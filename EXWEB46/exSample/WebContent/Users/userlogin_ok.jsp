@@ -24,6 +24,7 @@ body { font-family: 돋움, Verdana; font-size: 9pt}
 td   { font-family: 돋움, Verdana; font-size: 9pt; text-decoration: none; color: #000000} 
 -->
 </STYLE>
+
 <TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 WIDTH=330>
   <TR BGCOLOR=#7AAAD5>
     <td align=left><img src=./Member/img/h_b02.gif></td>

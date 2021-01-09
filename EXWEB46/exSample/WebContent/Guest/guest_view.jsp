@@ -18,6 +18,7 @@
  }
  //-->
  </script>
+ <%@ include file="/Include/topmenu.jsp" %>
  </head>
  <body topmargin="0" leftmargin="0">
    <table border="0" width="800">
@@ -25,7 +26,7 @@
        <td width="20%"  height="500" bgcolor="#ecf1ef" valign="top">
 
 		 <!--  다음에 추가할 부분 -->
-
+<%@ include file="/Include/login_form.jsp" %>
 	   </td>
        <td width="80%" valign="top">&nbsp;<br>
          <table border="0" width="90%" align="center">

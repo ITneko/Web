@@ -80,14 +80,14 @@ td   { font-family: 돋움, Verdana; font-size: 9pt; text-decoration: none; colo
 <body bgcolor="#FFFFFF" LEFTMARGIN=0  TOPMARGIN=0 >
  
  <!-- 탑 메뉴 영역 삽입-->
-
+<%@ include file="/Include/topmenu.jsp" %>
 
 <table border="0" width="800">
 <tr>
   <td width="20%"  bgcolor="#ecf1ef" valign="top" style="padding-left:0;">
 	
 	<!--로그인 영역 삽입-->
-
+<%@ include file="/Include/login_form.jsp" %>
   </td>
   <td width="80%" valign="top">&nbsp;<img src="Users/img/title1.gif" ><br>    
 	<form name=user method=post action="user_insert">
