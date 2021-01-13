@@ -6,33 +6,27 @@
 	}
 
 	function send(){
-		if(user.name.value == ""){
-			alert("이름을 입력해주세요");
-			user.name.focus();
+		if(users.passwd.value == ""){
+			alert("비밀번호를 입력해주세요");
+			users.passwd.focus();
 			return;
 		}
-		
-		if(user.passwd.value == ""){
+		if(users.newpasswd.value == ""){
 			alert("비밀번호를 입력해주세요");
-			user.passwd.focus();
+			users.newpasswd.focus();
 			return;
 		}
-		if(user.newpasswd.value == ""){
+		if(users.newrepasswd.value == ""){
 			alert("비밀번호를 입력해주세요");
-			user.newpasswd.focus();
-			return;
-		}
-		if(user.newrepasswd.value == ""){
-			alert("비밀번호를 입력해주세요");
-			user.newrepasswd.focus();
+			users.newrepasswd.focus();
 			return;
 		}
 		if(passChk()){
 			return;
 		}
-		if(user.tel.value == ""){
+		if(users.tel.value == ""){
 			alert("전화번호를 입력해주세요");
-			user.tel.focus();
+			users.tel.focus();
 			return;
 		}
 		
@@ -40,7 +34,7 @@
 	}
 	
 	function passChk(){
-		if(user.newpasswd.value != user.newrepasswd.value){
+		if(users.newpasswd.value != users.newrepasswd.value){
 			alert("비밀번호가 틀립니다.")
 			return true;
 		}
@@ -74,7 +68,7 @@ td   { font-family: 돋움, Verdana; font-size: 9pt; text-decoration: none; colo
 <%@ include file="/Include/login_form.jsp" %>
   </td>
   <td width="80%" valign="top">&nbsp;<img src="Users/img/title1.gif" ><br>    
-	<form name=user method=post action="user_modify">
+	<form name=users method=post action="user_modify">
 	<table border=0 cellpadding=0 cellspacing=0 border=0 width=730 valign=top>
 		<tr><td align=center><br>                            
 			<table cellpadding=0 cellspacing=0 border=0 width=650 align=center>       

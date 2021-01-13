@@ -24,12 +24,13 @@
 
    <!--DB에서 검색한 자료를 화면에 출력  -->
  <body topmargin="0" leftmargin="0">
+ <%@ include file="/Include/topmenu.jsp" %>
  <table border="0" width="800">
    <tr>
      <td width="20%"  height="500" bgcolor="#ecf1ef" valign="top">
 
 <!--  로그인 폼 추가 -->
-
+<%@ include file="/Include/login_form.jsp" %>
      </td>
      <td width="80%" valign="top">
        &nbsp;<br>

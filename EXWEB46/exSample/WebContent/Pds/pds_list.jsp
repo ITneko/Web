@@ -26,11 +26,13 @@
 
 <!-- 제목 부분 출력 -->
 <body bgcolor="#FFFFFF" topmargin="0" leftmargin="0">
+<%@ include file="/Include/topmenu.jsp" %>
   <table border="0" width="800">
     <tr>
       <td width="20%" height="500" valign="top" bgcolor="#ecf1ef">
 
 <!--  다음에 추가할 부분 -->
+<%@ include file="/Include/login_form.jsp" %>
 </td>
 
 	  <td width="80%" valign="top">	

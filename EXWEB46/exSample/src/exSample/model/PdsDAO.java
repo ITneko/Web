@@ -1,4 +1,4 @@
-package exPds.model;
+package exSample.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import exPds.util.DBManager;
+import exSample.util.DBManager;
 
 public class PdsDAO {
 	private PdsDAO() {

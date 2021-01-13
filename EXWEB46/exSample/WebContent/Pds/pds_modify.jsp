@@ -4,9 +4,11 @@
 <head><title>자료 등록 수정</title><link rel="stylesheet" type="text/css" href="/stylesheet.css">
 </head>
 <body topmargin="0" leftmargin="0">
+<%@ include file="/Include/topmenu.jsp" %>
 <table border="0" width="800">
 <tr>
   <td width="20%" height="500" valign="top" bgcolor="#ecf1ef">
+  <%@ include file="/Include/login_form.jsp" %>
 
   <!--  로그인 폼 추가부분 -->
   <script>

@@ -42,7 +42,7 @@
      <p align="center"><font color="white" size="2"><a href="board_list" class="white">게시판</a>
      </td>
      <td bgcolor="#9966ff" width="10%" onmouseover="style.backgroundColor='#2772D3'" onmouseout="style.backgroundColor=''">
-     <p align="center"><font color="white" size="2"><b><a href="" class="white">자료실</a></b></font></p>
+     <p align="center"><font color="white" size="2"><b><a href="pds_list.do" class="white">자료실</a></b></font></p>
      </td>
      <td bgcolor="#9966ff" width="10%" onmouseover="style.backgroundColor='#2772D3'" onmouseout="style.backgroundColor=''">
      <p align="center"><font color="white" size="2"><b><a href="guest_list" class="white">방명록</a></b></font></p>
