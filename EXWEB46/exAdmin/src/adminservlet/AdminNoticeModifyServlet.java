@@ -1,4 +1,4 @@
-package guestservlet;
+package adminservlet;
 
 import java.io.IOException;
 
@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import guest.model.GuestDAO;
+import admin.model.AdminDAO;
+import admin.model.AdminVO;
 
 /**
- * Servlet implementation class GuestDeleteServlet
+ * Servlet implementation class AdminNoticeModifyServlet
  */
-@WebServlet("/guest_delete")
-public class GuestDeleteServlet extends HttpServlet {
+@WebServlet("/notice_modify")
+public class AdminNoticeModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GuestDeleteServlet() {
+    public AdminNoticeModifyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +32,12 @@ public class GuestDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idx = Integer.parseInt(request.getParameter("idx"));
-		//int page = Integer.parseInt(request.getParameter("page"));
 		
-		request.setAttribute("idx", idx);
-		//request.setAttribute("page", page);
+		AdminDAO dao = AdminDAO.getInstance();
+		AdminVO admin = dao.noticeView(idx);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Admin/guest_delete.jsp");
+		request.setAttribute("admin", admin);
+		RequestDispatcher rd = request.getRequestDispatcher("Admin/notice_modify.jsp");
 		rd.forward(request, response);
 	}
 
@@ -45,22 +46,18 @@ public class GuestDeleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idx = Integer.parseInt(request.getParameter("idx"));
-		//int page = Integer.parseInt(request.getParameter("page"));
-		String pass = request.getParameter("pass");
 		
-		System.out.println(idx);
-		//System.out.println(page);
-		System.out.println(pass);
+		AdminDAO dao = AdminDAO.getInstance();
+		AdminVO admin = new AdminVO();
 		
-		request.setAttribute("idx", idx);
-		//request.setAttribute("page", page);
-		
-		GuestDAO dao = GuestDAO.getInstance();
-		int row = dao.guestDelete(idx, pass);
+		admin.setSubject(request.getParameter("subject"));
+		admin.setContents(request.getParameter("contents"));
+		admin.setIdx(idx);
+		int row = dao.noticeModify(admin);
 		
 		request.setAttribute("row", row);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Guest/guest_delete_pro.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("Admin/notice_modify_pro.jsp");
 		rd.forward(request, response);
 	}
 

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import board.model.BoardVO;
 import util.DBManager;
 
 public class GuestDAO {
@@ -72,6 +73,42 @@ public class GuestDAO {
 		}
 		return list;
 	}
+	// 검색 리스트
+		public List<GuestVO> guestList(String s_query, int startpage, int endpage) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<GuestVO> list = new ArrayList<GuestVO>();
+			GuestVO guest = null;
+
+			String query = "select X.* from (select rownum as rnum, A.* from (select * from tbl_board order by idx desc)"
+					+ " A where " + s_query + " and rownum<=?) X where " + s_query + " and rnum>=?";
+
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, endpage);
+				pstmt.setInt(2, startpage);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					guest = new GuestVO();
+					guest.setIdx(rs.getInt("idx"));
+					guest.setName(rs.getString("name"));
+					guest.setSubject(rs.getString("subject"));
+					guest.setRegdate(rs.getString("regdate"));
+					guest.setReadcnt(rs.getString("readcnt"));
+
+					list.add(guest);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+			return list;
+		}
+
+	
 
 	// 카운트
 	public int guestCount() {
@@ -95,6 +132,31 @@ public class GuestDAO {
 		}
 		return row;
 	}
+	
+	// 검색 카운트
+		public int guestCount(String s_query) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int row = 0;
+
+			String query = "select count(*) from tbl_guest where " + s_query;
+
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(query);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					row = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+			return row;
+		}
+
 
 	// 뷰
 	public GuestVO guestView(int idx) {

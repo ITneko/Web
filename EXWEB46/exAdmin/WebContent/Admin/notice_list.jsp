@@ -1,6 +1,15 @@
 f<%@ page contentType="text/html; charset=UTF-8" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
+<script>
+function b_search(){
+	if(b_search.key.value == ""){
+		alert("값을 입력해주세요!");
+		b_search.key.focus();
+		return
+	}
+	b_search.submit();
+}</script>
 <head>
 <title>공지사항 관리 - 관리자페이지</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -29,7 +38,7 @@ A:hover {font-family:tahoma;font-size:9pt;color:#009900;text-decoration:underlin
 								</table><br>
 								<table width="80%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
-                    <td height="20">* 총 등록수 : <font color=red>33</font> 건</td>
+                    <td height="20">* 총 등록수 : <font color=red>${totcount }</font> 건</td>
                   </tr>
                   <tr>
                     <td><table width="100%" border="0" cellpadding="6" cellspacing="1" bgcolor="DDDDDD">
@@ -40,24 +49,30 @@ A:hover {font-family:tahoma;font-size:9pt;color:#009900;text-decoration:underlin
                         <td width="10%" align="center"><strong>조회수</strong></td>
                       </tr>
                       <tr>
-                        <td align="center" bgcolor="#FFFFFF">1</td>
-                        <td bgcolor="#FFFFFF"><a href="" class="unnamed1">안녕하세요</a></td>
-                        <td align="center" bgcolor="#FFFFFF">2007-11-11</td>
-												<td align="center" bgcolor="#FFFFFF">3</td>
+                      <c:forEach var="list" items="${list }">
+                        <td align="center" bgcolor="#FFFFFF">${list.idx }</td>
+                        <td bgcolor="#FFFFFF"><a href="notice_view?idx=${list.idx }" class="unnamed1">${list.subject }</a></td>
+                        <td align="center" bgcolor="#FFFFFF">${list.regdate }</td>
+												<td align="center" bgcolor="#FFFFFF">${list.readcnt }</td>
+                      </tr>
+                      </c:forEach>
+	                  <tr>
+                        <td height="35" colspan="10" align="center" bgcolor="#FFFFFF">${pageSkip }</td>
                       </tr>
 	                     <tr>
-                        <td height="35" colspan="10" align="center" bgcolor="#FFFFFF">[1][2][3]</td>
+                        <td height="35" colspan="10" align="center" bgcolor="#FFFFFF"></td>
                       </tr>
-											<form action="notice.jsp" method="post" name="b_search">
+											<form action="notice_list" method="post" name="b_search">
                       <tr>
                         <td colspan="10" align="center" bgcolor="#FFFFFF"><table width="610" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                               <td width=80% height="30" colspan="2" align="right">
 																<select name="search" class="textfield">
-																	<option >제목</option>
+								<option value="subject" <c:if test="${search=='search' }"> selected </c:if>>글제목</option>
+									<option value="contents" <c:if test="${search=='contents' }"> selected </c:if>>글내용</option>
 																</select>
-																<input name="key" type="text" class="textfield" size="30" value=""></td>
-                              <td width=20% align="right"><a href=""><b>[검색]</b></a>  &nbsp;<a href="notice_write"><b>[글쓰기]</b></a></td>
+																<input name="key" type="text" class="textfield" size="30" value="${key }"></td>
+                              <td width=20% align="right"><a href="javascript:b_search()"><b>[검색]</b></a>  &nbsp;<a href="notice_write"><b>[글쓰기]</b></a></td>
                             </tr>
 									
                         </table></td>

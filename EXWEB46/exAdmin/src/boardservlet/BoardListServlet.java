@@ -79,9 +79,9 @@ public class BoardListServlet extends HttpServlet {
 		
 		String pageSkip = "";
 		if(key.equals("")) {
-			pageSkip = PageIndex.pageList(nowpage, totpage, "notice_list", "");
+			pageSkip = PageIndex.pageList(nowpage, totpage, "board_list", "");
 		}else {
-			pageSkip = PageIndex.pageListHan(nowpage, totpage, "notice_list", search, key);
+			pageSkip = PageIndex.pageListHan(nowpage, totpage, "board_list", search, key);
 		}
 		
 		request.setAttribute("totcount", totcount);
