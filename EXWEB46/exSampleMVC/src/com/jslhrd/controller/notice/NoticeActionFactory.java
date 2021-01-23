@@ -2,7 +2,6 @@ package com.jslhrd.controller.notice;
 
 import com.jslhrd.service.Action;
 import com.jslhrd.service.notice.NoticeDeleteAction;
-import com.jslhrd.service.notice.NoticeDeleteProAction;
 import com.jslhrd.service.notice.NoticeListAction;
 import com.jslhrd.service.notice.NoticeModifyAction;
 import com.jslhrd.service.notice.NoticeModifyProAction;
@@ -37,8 +36,6 @@ public class NoticeActionFactory {
 			action = new NoticeModifyProAction();
 		}else if (cmd.equals("notice_delete")) {
 			action = new NoticeDeleteAction();
-		}else if (cmd.equals("notice_delete_pro")) {
-			action = new NoticeDeleteProAction();
 		}
 		return action;
 	}

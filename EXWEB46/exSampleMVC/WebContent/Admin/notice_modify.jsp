@@ -45,7 +45,7 @@ body {
 			</table><br>
 			<table width="60%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-				<form name="admin" method="post" action="notice_modify?idx=${admin.idx }">
+				<form name="admin" method="post" action="Notice?cmd=notice_modify_pro&idx=${admin.idx }">
 					<td><table width="100%" border="0" cellpadding="6" cellspacing="1" bgcolor="DDDDDD">
 							<tr>
 								<td width="20%" align="center" bgcolor="EcECEC"><strong>제목</strong></td>
@@ -62,7 +62,7 @@ body {
 			</table><br>
 			<table width="60%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td align=center><a href="javascript:send()"><b>[수정] [등록]</b></a>&nbsp; <a href=""><b>[취소]</b></a></td>
+					<td align=center><a href="javascript:send()"><b>[수정] [등록]</b></a>&nbsp; <a href="javascript:history.back()"><b>[취소]</b></a></td>
 				</tr>
 			</table>
 </body>

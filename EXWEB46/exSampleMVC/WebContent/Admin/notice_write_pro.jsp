@@ -4,7 +4,7 @@
 <c:if test="${row==1 }">
 	<script>
 		alert("작성성공!");
-		location.href = "notice_list?page=" + ${page};
+		location.href = "Notice?cmd=notice_list";
 	</script>
 </c:if>
 

@@ -4,7 +4,7 @@
 <c:if test="${row==1 }">
 <script>
 	alert("삭제성공!");
-	location.href="guest_list?;
+	location.href="AdminGuest?cmd=guest_list";
 </script>
 </c:if>
 	

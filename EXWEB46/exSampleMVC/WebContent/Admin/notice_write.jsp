@@ -45,7 +45,7 @@ body {
 			</table><br>
 			<table width="60%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-				<form name="admin" method="post" action="notice_write">
+				<form name="admin" method="post" action="Notice?cmd=notice_write_pro">
 					<td><table width="100%" border="0" cellpadding="6" cellspacing="1" bgcolor="DDDDDD">
 							<tr>
 								<td width="20%" align="center" bgcolor="EcECEC"><strong>제목</strong></td>

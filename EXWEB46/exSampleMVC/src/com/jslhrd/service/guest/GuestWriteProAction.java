@@ -19,7 +19,6 @@ public class GuestWriteProAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		String subject = request.getParameter("subject");
-		String pass = request.getParameter("pass");
 		String contents = request.getParameter("contents");
 		
 		
@@ -27,7 +26,6 @@ public class GuestWriteProAction implements Action {
 		vo.setName(name);
 		vo.setSubject(subject);
 		vo.setContents(contents);
-		vo.setPass(pass);
 		
 		GuestDAO dao = GuestDAO.getInstance();
 		int row = dao.guestWrite(vo);

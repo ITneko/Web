@@ -18,8 +18,9 @@ public class NoticeDeleteAction implements Action {
 		// TODO Auto-generated method stub
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		NoticeDAO dao = NoticeDAO.getInstance();
-		dao.noticeDelete(idx);
-		RequestDispatcher rd = request.getRequestDispatcher("Admin/notice_list.jsp");
+		int row = dao.noticeDelete(idx);
+		request.setAttribute("row", row);
+		RequestDispatcher rd = request.getRequestDispatcher("Admin/notice_delete_pro.jsp");
 		rd.forward(request, response);
 	}
 

@@ -2,7 +2,7 @@
 <script>
 function pds_down(filename){
 		var escapeFile = encodeURI(filename, 'UTF-8')
-		location.href = "pds_down?filename="+escapeFile;
+		location.href = "AdminPds?cmd=pds_down&filename="+escapeFile;
 	}
 </script>
 <html>

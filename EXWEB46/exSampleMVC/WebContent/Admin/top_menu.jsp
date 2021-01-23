@@ -20,25 +20,25 @@ A:hover {font-family:tahoma;font-size:9pt;color:#000000;text-decoration:underlin
     <TR> 
 			<TD width="20"></TD>
 			<td width="100"> 
-        <p><a href="notice_list">[공지사항 관리]</a></p>
+        <p><a href="Notice?cmd=notice_list">[공지사항 관리]</a></p>
       </td>
 			<TD width="100"> 
-        <P><a href="board_list">[게시판 관리]</a></P>
+        <P><a href="AdminBoard?cmd=board_list">[게시판 관리]</a></P>
       </TD>
 			<TD width="100"> 
-        <P><a href="user_list">[회원 관리]</a></P>
+        <P><a href="AdminUser?cmd=user_list">[회원 관리]</a></P>
       </TD>
 			<TD width="100"> 
-        <P><a href="pds_list">[자료실 관리]</a></P>
+        <P><a href="AdminPds?cmd=pds_list">[자료실 관리]</a></P>
       </TD>
 			<TD width="100"> 
-        <P><a href="guest_list">[방명록 관리]</a></P>
+        <P><a href="AdminGuest?cmd=guest_list">[방명록 관리]</a></P>
       </TD>
 			<TD width="100"> 
-        	<P><a href="admin_logout">[관리자 관리]</a></P>
+        	<P><a href="">[관리자 관리]</a></P>
       </TD>
       <TD width="100"> 
-        <P><a href="logout.jsp">로그아웃</a></P>
+        <P><a href="Admin?cmd=admin_logout">로그아웃</a></P>
       </TD>
     </TR>
   </TABLE>

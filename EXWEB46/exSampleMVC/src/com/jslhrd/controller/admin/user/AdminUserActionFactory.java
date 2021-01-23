@@ -4,6 +4,7 @@ import com.jslhrd.service.Action;
 import com.jslhrd.service.admin.AdminIndexAction;
 import com.jslhrd.service.admin.AdminLoginAction;
 import com.jslhrd.service.admin.AdminLogoutAction;
+import com.jslhrd.service.admin.user.AdminUserListAction;
 
 public class AdminUserActionFactory {
 	private static AdminUserActionFactory instance = new AdminUserActionFactory();
@@ -18,13 +19,9 @@ public class AdminUserActionFactory {
 	public Action getAction(String cmd) {
 		Action action = null;
 		System.out.println("AdminActionFactory : " + cmd);
-		if (cmd.equals("admin_login")) {
-			action = new AdminLoginAction();
-		} else if (cmd.equals("admin_logout")) {
-			action = new AdminLogoutAction();
-		} else if (cmd.equals("admin_index")) {
-			action = new AdminIndexAction();
-		}
+		if (cmd.equals("user_list")) {
+			action = new AdminUserListAction();
+		} 
 		return action;
 	}
 }

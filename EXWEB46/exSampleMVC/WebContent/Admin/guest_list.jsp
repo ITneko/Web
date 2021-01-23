@@ -50,7 +50,7 @@ A:hover {font-family:tahoma;font-size:9pt;color:#009900;text-decoration:underlin
                       <tr>
                       <c:forEach var="list" items="${list }">
                         <td align="center" bgcolor="#FFFFFF">${listcount }</td>
-                        <td bgcolor="#FFFFFF"><img src="Admin/img/btn/icon_re.gif" border=0><a class="list" href="guest_view?idx=${list.idx}">${list.subject }</a></td>
+                        <td bgcolor="#FFFFFF"><img src="Admin/img/btn/icon_re.gif" border=0><a class="list" href="AdminGuest?cmd=guest_view&idx=${list.idx}">${list.subject }</a></td>
                         <td align="center" bgcolor="#FFFFFF">${list.name }</td>
 												<td align="center" bgcolor="#FFFFFF">${list.regdate }</td>
 												<td align="center" bgcolor="#FFFFFF">${list.readcnt }</td>

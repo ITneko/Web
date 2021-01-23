@@ -1,9 +1,15 @@
 package com.jslhrd.controller.admin.pds;
 
 import com.jslhrd.service.Action;
-import com.jslhrd.service.admin.AdminIndexAction;
-import com.jslhrd.service.admin.AdminLoginAction;
-import com.jslhrd.service.admin.AdminLogoutAction;
+import com.jslhrd.service.admin.pds.AdminPdsDeleteAction;
+import com.jslhrd.service.admin.pds.AdminPdsDeleteProAction;
+import com.jslhrd.service.admin.pds.AdminPdsDownAction;
+import com.jslhrd.service.admin.pds.AdminPdsListAction;
+import com.jslhrd.service.admin.pds.AdminPdsModifyAction;
+import com.jslhrd.service.admin.pds.AdminPdsModifyProAction;
+import com.jslhrd.service.admin.pds.AdminPdsViewAction;
+import com.jslhrd.service.admin.pds.AdminPdsWriteAction;
+import com.jslhrd.service.admin.pds.AdminPdsWriteProAction;
 
 public class AdminPdsActionFactory {
 	private static AdminPdsActionFactory instance = new AdminPdsActionFactory();
@@ -17,13 +23,25 @@ public class AdminPdsActionFactory {
 
 	public Action getAction(String cmd) {
 		Action action = null;
-		System.out.println("AdminActionFactory : " + cmd);
-		if (cmd.equals("admin_login")) {
-			action = new AdminLoginAction();
-		} else if (cmd.equals("admin_logout")) {
-			action = new AdminLogoutAction();
-		} else if (cmd.equals("admin_index")) {
-			action = new AdminIndexAction();
+		System.out.println("PdsActionFactory : " + cmd);
+		if (cmd.equals("pds_list")) {
+			action = new AdminPdsListAction();
+		} else if (cmd.equals("pds_write")) {
+			action = new AdminPdsWriteAction();
+		} else if (cmd.equals("pds_write_pro")) {
+			action = new AdminPdsWriteProAction();
+		}else if (cmd.equals("pds_view")) {
+			action = new AdminPdsViewAction();
+		}else if (cmd.equals("pds_modify")) {
+			action = new AdminPdsModifyAction();
+		}else if (cmd.equals("pds_modify_pro")) {
+			action = new AdminPdsModifyProAction();
+		}else if (cmd.equals("pds_delete")) {
+			action = new AdminPdsDeleteAction();
+		}else if (cmd.equals("pds_delete_pro")) {
+			action = new AdminPdsDeleteProAction();
+		}else if (cmd.equals("pds_down")) {
+			action = new AdminPdsDownAction();
 		}
 		return action;
 	}

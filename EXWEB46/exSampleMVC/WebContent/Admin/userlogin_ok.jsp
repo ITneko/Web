@@ -58,8 +58,8 @@ td   { font-family: 돋움, Verdana; font-size: 9pt; text-decoration: none; colo
   <tr>
     <td align="center">
       <a href="#">[자기정보수정]</a>
-      <a href="admin_logout">[로그아웃]
-      <a href="notice_list">[메인으로가기]
+      <a href="Admin?cmd=admin_logout">[로그아웃]
+      <a href="Notice?cmd=notice_list">[메인으로가기]
 
 	</td>
   </tr>

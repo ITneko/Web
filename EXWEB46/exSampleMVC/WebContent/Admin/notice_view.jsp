@@ -51,7 +51,7 @@ A:hover {font-family:tahoma;font-size:9pt;color:#009900;text-decoration:underlin
 			</table><br>
 			<table width="60%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td align=center><a href="notice_modify?idx=${idx }"><b>[수정]</b></a>&nbsp; <a href="notice_delete?idx=${admin.idx }"><b>[삭제]</b></a>&nbsp; <a href=""><b>[목록]</b></a></td>
+					<td align=center><a href="Notice?cmd=notice_modify&idx=${idx }"><b>[수정]</b></a>&nbsp; <a href="Notice?cmd=notice_delete&idx=${admin.idx }"><b>[삭제]</b></a>&nbsp; <a href="Notice?cmd=notice_list"><b>[목록]</b></a></td>
 				</tr>
 			</table>
 </body>

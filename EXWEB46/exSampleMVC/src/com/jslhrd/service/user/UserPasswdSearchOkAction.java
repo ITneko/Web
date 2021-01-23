@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jslhrd.domain.user.UsersDAO;
 import com.jslhrd.service.Action;
 import com.jslhrd.util.SHA256Util;
+import com.jslhrd.util.getRandomPassword;
 
 public class UserPasswdSearchOkAction implements Action {
 

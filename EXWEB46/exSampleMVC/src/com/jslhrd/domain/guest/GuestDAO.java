@@ -178,6 +178,26 @@ public class GuestDAO {
 		return row;
 	}
 	
+	public int adminGuestDelete(int idx) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int row = 0;
+
+		String query = "delete from tbl_guest where idx=?";
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, idx);
+			row = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return row;
+	}
+	
 	// 읽음
 		public void guestReadCnt(int idx) {
 			Connection conn = null;

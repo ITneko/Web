@@ -238,6 +238,30 @@ public class BoardDAO {
 		}
 		return row;
 	}
+	
+	public int adminBoardModify(int idx, BoardVO board) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int row = 0;
+
+		String query = "update tbl_board set subject=?, contents=?, email=? where idx=?";
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, board.getSubject());
+			pstmt.setString(2, board.getContents());
+			pstmt.setString(3, board.getEmail());
+			pstmt.setInt(4, idx);
+			row = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return row;
+	}
 
 	// 삭제
 	public int boardDelete(int idx) {

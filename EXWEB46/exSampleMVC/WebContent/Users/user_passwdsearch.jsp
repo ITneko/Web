@@ -16,12 +16,12 @@ td   { font-family: 돋움, Verdana; font-size: 9pt; text-decoration: none; colo
 		if(passSearch.userid.value==""){
 			alert("아이디 입력");
 			passSearch.userid.focus();
-			return false;
+			return;
 		}
 		if(passSearch.email.value==""){
 			alert("아이디 입력");
 			passSearch.email.focus();
-			return false;
+			return;
 		}
 		passSearch.submit();
 	}

@@ -15,9 +15,24 @@ A:hover {font-family:tahoma;font-size:9pt;color:#009900;text-decoration:underlin
 --> 
 </style> 
 </head>
+<script>
+   function send(){
+      if(admin.adminid.value==""){
+         alert("아이디가 입력되지 않았습니다.");
+         login.adminid.focus();
+         return false;
+      }if(admin.adminpass.value==""){
+         alert("비밀번호가 입력되지 않았습니다.");
+         login.adminpass.focus();
+         return false;
+      }
+      admin.action = "Admin?cmd=admin_login";
+      admin.submit();
+   }
+</script>
 <body text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="admin" method="post">
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
-<form name="frm" method="post" >
   <tr>
     <td><table width="100%" height="420" border="0" cellpadding="0" cellspacing="0" background="Admin/img/bg.gif">
         <tr> 
@@ -45,7 +60,7 @@ A:hover {font-family:tahoma;font-size:9pt;color:#009900;text-decoration:underlin
                     <tr> 
                       <td>&nbsp;</td>
                       <td style="padding:0 0 10 0;">websnet.net의 관리자페이지 입니다.<br> 
-											<strong>전체적인 게시판 관리</strong>를 하실 수 있습니다.<BR> 
+                                 <strong>전체적인 게시판 관리</strong>를 하실 수 있습니다.<BR> 
                         Internet Explorer4.0 이상에 최적화 되어 있습니다.</td>
                       <td>&nbsp;</td>
                     </tr>
@@ -55,11 +70,10 @@ A:hover {font-family:tahoma;font-size:9pt;color:#009900;text-decoration:underlin
                         <!-- 도메인, 관리계정, 비밀번호 -->
                         <table width="275" height="63" border="0" cellpadding="0" cellspacing="0">
                           <tr> 
-                          <form name="admin" method="post" action="Admin?cmd=admin_login">
                             <td><img src="Admin/img/admin_img09.gif" alt="도메인" width="64" height="19" align="absmiddle"> 
                               <input name="domain" type="text" style="width:140px;" value="websnet.net" readonly></td>
-                            <td width="61" rowspan="3"><input type='image' src="Admin/img/admin_img12.gif" alt="connect" value="submit" width="61" height="63" border="0" onfocus=blur()></a></td>
-                          </tr>
+                            <td width="61" rowspan="3"><input type='image' src="Admin/img/admin_img12.gif" alt="connect" value="submit" width="61" height="63" border="0" onClick="send()"></td>
+                         </tr>
                           <tr> 
                             <td><img src="Admin/img/admin_img10.gif" alt="관리계정" width="64" height="19" align="absmiddle"> 
                               <input name="adminid" type="text" tabindex="1" style="width:140px;"></td>
@@ -79,13 +93,12 @@ A:hover {font-family:tahoma;font-size:9pt;color:#009900;text-decoration:underlin
               <tr> 
                 <td colspan="4"><img src="Admin/img/admin_img05.gif" width="617" height="46"></td>
               </tr>
-              </form>
             </table></td>
           <td>&nbsp;</td>
         </tr>
       </table></td>
   </tr>
-</form>
 </table>
+</form>
 </body>
 </html>

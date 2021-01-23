@@ -1,11 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<script>
-	function del_(){
-		var url = "board_delete?idx=${idx}";
-		window.open(url, "", "width=350, hieght=300");
-	}
 
-</script>
 <html>
 <head>
 <title>협력업체 관리 - 관리자페이지</title>
@@ -59,7 +53,7 @@ A:hover {font-family:tahoma;font-size:9pt;color:#009900;text-decoration:underlin
 			</table><br>
 			<table width="60%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td align=center><a href=""><b>[답변]</b></a>&nbsp; <a href=""><b>[수정]</b></a>&nbsp; <a href="javascript:del_()"><b>[삭제]</b></a>&nbsp; <a href=""><b>[취소]</b></a></td>
+					<td align=center><a href=""><b>[답변]</b></a>&nbsp; <a href="AdminBoard?cmd=board_modify&idx=${idx }&page=${page}"><b>[수정]</b></a>&nbsp; <a href="AdminBoard?cmd=board_delete_pro&idx=${idx }&page=${page}"><b>[삭제]</b></a>&nbsp; <a href="javascript:history.back()"><b>[취소]</b></a></td>
 				</tr>
 			</table>
 </body>

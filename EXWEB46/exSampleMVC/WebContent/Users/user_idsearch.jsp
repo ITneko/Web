@@ -16,7 +16,7 @@ td   { font-family: 돋움, Verdana; font-size: 9pt; text-decoration: none; colo
 		if(idSearch.tel.value==""){
 			alert("연락처입력");
 			idSearch.tel.focus();
-			return false;
+			return;
 		}
 		idSearch.submit();
 	}

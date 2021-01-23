@@ -30,6 +30,7 @@ public class NoticeWriteProAction implements Action {
 		
 		//request.setAttribute("page", page);
 		request.setAttribute("row", row);
+		System.out.println(row);
 		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("Admin/notice_write_pro.jsp");

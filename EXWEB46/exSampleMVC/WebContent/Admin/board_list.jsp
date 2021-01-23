@@ -50,7 +50,7 @@ A:hover {font-family:tahoma;font-size:9pt;color:#009900;text-decoration:underlin
                       <tr>
                       <c:forEach var="list" items="${list }">
                         <td align="center" bgcolor="#FFFFFF">${listcount }</td>
-                        <td bgcolor="#FFFFFF"><img src="Admin/img/btn/icon_re.gif" border=0><a class="list" href="board_view?idx=${list.idx}">${list.subject }</a></td>
+                        <td bgcolor="#FFFFFF"><img src="Admin/img/btn/icon_re.gif" border=0><a class="list" href="AdminBoard?cmd=board_view&idx=${list.idx}">${list.subject }</a></td>
                         <td align="center" bgcolor="#FFFFFF">${list.name }</td>
 												<td align="center" bgcolor="#FFFFFF">${list.regdate }</td>
 												<td align="center" bgcolor="#FFFFFF">${list.readcnt }</td>
@@ -72,7 +72,7 @@ A:hover {font-family:tahoma;font-size:9pt;color:#009900;text-decoration:underlin
 																	<option>제목</option>
 																</select>
 																<input name="key" type="text" class="textfield" size="30"></td>
-                              <td width=20% align="right"><b>[검색]</b>  &nbsp;<a href="board_write?page=${page }"><b>[글쓰기]</b></a></td>
+                              <td width=20% align="right"><b>[검색]</b>  &nbsp;<a href="AdminBoard?cmd=board_write&page=${page }"><b>[글쓰기]</b></a></td>
                             </tr>
                         </table></td>
                       </tr>
